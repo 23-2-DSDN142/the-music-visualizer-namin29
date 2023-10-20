@@ -14,6 +14,7 @@ let floating4lines;
 let floating5lines;
 let floating6lines;
 let townsillhouette;
+let cape = [];
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -34,6 +35,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     floating5lines = loadImage('floating5lines.png');
     floating6lines = loadImage('floating6lines.png');
     townsillhouette = loadImage('townsillhouette.png');
+    cape.push(loadImage('frame0.png'));
     firstRun = false;
   }
 
@@ -49,6 +51,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let bassMap = map(bass, 30, 100, -20, -80, true);
   let bassMap2 = map(bass, 50, 100, -50, -80);
   let vocalMap = map(vocal, 40, 100, 80, 500, true);
+  let vocalMapcape = int(map(vocal, 40, 100, 0, 1, true));
   let vocalMapcolour = map(vocal, 40, 100, 140, 0, true);
   let tintAlpha = otherMapcolour;
   let tintColour = color(tintRed, 0, 0, tintAlpha);
@@ -169,7 +172,9 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     image(floating6lines, 0, otherMap2 - 20);
   }
 
-
+  if (cape) {
+  image(cape[vocalMapcape], 0, 0)
+  }
 
 //  if (drumMap >= 30) {
 //    fill(255, 100, 100);
